@@ -37,5 +37,6 @@
     <string name="button_registrer">Ingresar</string>
     <string name="button_cancel">Cancelar</string>
     <string name="button_save">Guardar</string>
+    <string name="title_activity_maps">Map</string>
 
 </resources>
