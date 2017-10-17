@@ -8,4 +8,19 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="Login_btnRegistrer" parent="Theme.AppCompat.Light">
+        <item name="colorControlHighlight">#00bcd4</item>
+        <item name="colorButtonNormal">@color/colorPrimaryDark</item>
+    </style>
+
+    <style name="Login_btnSave" parent="Theme.AppCompat.Light">
+        <item name="colorControlHighlight">#00bcd4</item>
+        <item name="colorButtonNormal">#ffffffff</item>
+    </style>
+
+    <style name="Login_btnCancel" parent="Theme.AppCompat.Light">
+        <item name="colorControlHighlight">#e91e63</item>
+        <item name="colorButtonNormal">#d32f2f</item>
+    </style>
+
 </resources>
