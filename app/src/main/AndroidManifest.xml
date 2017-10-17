@@ -16,6 +16,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".presentation.view.Dashboard.DashboardActivity" />
+        <activity android:name=".presentation.view.Quiz.QuizActivity" />
+        <activity android:name=".presentation.view.Login.LoginActivity"></activity>
     </application>
 
 </manifest>

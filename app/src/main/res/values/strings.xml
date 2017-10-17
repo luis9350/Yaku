@@ -1,3 +1,41 @@
 <resources>
     <string name="app_name">Yaku</string>
+    <!--Quiz-->
+    <string name="question1">¿Cuántas personas viven en tu hogar?</string>
+
+    <string name="question2">¿Con cuantos sanitarios cuenta tu hogar?</string>
+
+    <string name="question3">¿Con qué frecuencia usas la ducha?</string>
+    <string name="answer3A">Dos veces al día</string>
+    <string name="answer3B">Todos los días</string>
+    <string name="answer3C">Día por medio</string>
+    <string name="answer3D">De vez en cuando</string>
+
+    <string name="question4">¿Utilizas lavavajillas?</string>
+    <string name="answer4A">Si</string>
+    <string name="answer4B">No</string>
+
+    <string name="question5">¿Con que frecuencia lavas tu coche?</string>
+    <string name="answer5A">Todos los días</string>
+    <string name="answer5B">Día por medio</string>
+    <string name="answer5C">Una vez a la semana</string>
+    <string name="answer5D">De vez en cuando</string>
+    <string name="answer5E">No tengo auto</string>
+
+    <string name="question6">¿Utilizas lavadora?</string>
+    <string name="answer6A">Si</string>
+    <string name="answer6B">No</string>
+
+    <string name="question7">¿Riegas el jardín con frecuencia?</string>
+    <string name="answer7A">Si</string>
+    <string name="answer7B">No</string>
+    <string name="answer7C">No tengo jardín</string>
+
+    <string name="question8">¿Cual es la lectura de tu último consumo de agua? (m3)</string>
+
+    <!--basics-->
+    <string name="button_registrer">Ingresar</string>
+    <string name="button_cancel">Cancelar</string>
+    <string name="button_save">Guardar</string>
+
 </resources>
