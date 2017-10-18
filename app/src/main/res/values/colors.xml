@@ -7,5 +7,9 @@
     <color name="colorTextQuiz">#FFFFFF</color>
     <color name="colorSpinner">#FFFFFF</color>
 
+    <color name="colorWhite">#FFFFFF</color>
+    <color name="colorGray">#cccccc</color>
+
+
 
 </resources>

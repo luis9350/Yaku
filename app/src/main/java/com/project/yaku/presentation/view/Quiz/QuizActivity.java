@@ -1,5 +1,7 @@
 package com.project.yaku.presentation.view.Quiz;
 
+import android.content.Context;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -7,7 +9,8 @@ import android.widget.Button;
 import android.widget.Spinner;
 
 import com.project.yaku.R;
-import com.project.yaku.presentation.model.MasterView;
+import com.project.yaku.presentation.model.ui.MasterView;
+import com.project.yaku.presentation.view.Main.MainActivity;
 
 public class QuizActivity extends AppCompatActivity implements MasterView{
 
@@ -25,14 +28,18 @@ public class QuizActivity extends AppCompatActivity implements MasterView{
     double vFrecuenciaLavadoCoche[]={1,0.5,0.3,1.5,0};
     double vFrecuenciaRiegoJardin[]={1,0.5,0.3,1.5,0};
 
+    private Context mContext;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz);
+        initializeComponents();
     }
 
     @Override
     public void initializeComponents() {
+        mContext=QuizActivity.this;
+
         mSpnAnswer1=(Spinner)findViewById(R.id.quiz_spnAnswer1);
         mSpnAnswer1=(Spinner)findViewById(R.id.quiz_spnAnswer2);
         mSpnAnswer1=(Spinner)findViewById(R.id.quiz_spnAnswer3);
@@ -46,7 +53,7 @@ public class QuizActivity extends AppCompatActivity implements MasterView{
             @Override
             public void onClick(View view) {
                 //with the data, we can obtain the consume water of the user
-                
+                navigateToActivity(new Intent(mContext, MainActivity.class));
             }
         });
 
@@ -63,8 +70,9 @@ public class QuizActivity extends AppCompatActivity implements MasterView{
     }
 
     @Override
-    public void navigateToActivity() {
-
+    public void navigateToActivity(Intent i) {
+        startActivity(i);
+        finish();
     }
 
     private double getConsumo(int mNumPersonas, int mNumSanitarios,double mFrecuenciaDucha, double mUtilizaLavaVajillas, double mFrecuenciaLavadoCoche, double mUtilizaLavadora, double mRiegaJardin){
