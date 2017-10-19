@@ -43,9 +43,9 @@ public class QuizActivity extends AppCompatActivity implements MasterView{
         mSpnAnswer1=(Spinner)findViewById(R.id.quiz_spnAnswer1);
         mSpnAnswer1=(Spinner)findViewById(R.id.quiz_spnAnswer2);
         mSpnAnswer1=(Spinner)findViewById(R.id.quiz_spnAnswer3);
-        mSpnAnswer1=(Spinner)findViewById(R.id.quiz_spnAnswer4);
+        //mSpnAnswer1=(Spinner)findViewById(R.id.quiz_spnAnswer4);
         mSpnAnswer1=(Spinner)findViewById(R.id.quiz_spnAnswer5);
-        mSpnAnswer1=(Spinner)findViewById(R.id.quiz_spnAnswer6);
+        //mSpnAnswer1=(Spinner)findViewById(R.id.quiz_spnAnswer6);
         mSpnAnswer1=(Spinner)findViewById(R.id.quiz_spnAnswer7);
 
         btnSave=(Button)findViewById(R.id.quiz_btnSave);
@@ -56,7 +56,6 @@ public class QuizActivity extends AppCompatActivity implements MasterView{
                 navigateToActivity(new Intent(mContext, MainActivity.class));
             }
         });
-
     }
 
     @Override

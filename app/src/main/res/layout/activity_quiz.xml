@@ -257,14 +257,17 @@
                             android:layout_weight="3"
                             android:layout_height="match_parent">
 
-                            <Spinner
-                                android:id="@+id/quiz.spnAnswer4"
-                                android:layout_width="match_parent"
-                                android:layout_height="@dimen/spinner_height"
+                            <Switch
+                                android:id="@+id/quiz.switchQuiz4"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textAppearance="?android:attr/textAppearanceMedium"
+                                android:textSize="@dimen/letter_m"
+                                android:textStyle="bold"
+                                android:textColor="@color/colorTextQuiz"
                                 android:layout_gravity="center"
-                                android:gravity="center"
-                                android:background="@color/colorSpinner"
-                                android:entries="@array/numbers"/>
+                                android:text="SI "/>
+
                         </FrameLayout>
 
                     </LinearLayout>
@@ -385,14 +388,17 @@
                             android:layout_weight="3"
                             android:layout_height="match_parent">
 
-                            <Spinner
-                                android:id="@+id/quiz.spnAnswer6"
-                                android:layout_width="match_parent"
-                                android:layout_height="@dimen/spinner_height"
+                            <Switch
+                                android:id="@+id/quiz.switchQuiz6"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textAppearance="?android:attr/textAppearanceMedium"
+                                android:textSize="@dimen/letter_m"
+                                android:textStyle="bold"
+                                android:textColor="@color/colorTextQuiz"
                                 android:layout_gravity="center"
-                                android:gravity="center"
-                                android:background="@color/colorSpinner"
-                                android:entries="@array/numbers"/>
+                                android:text="SI "/>
+
                         </FrameLayout>
 
                     </LinearLayout>

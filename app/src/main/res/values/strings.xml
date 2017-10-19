@@ -42,4 +42,10 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
+    <!--Shared Preferences-->
+    <string name="sharedPrefs">yakuSharedPrefs</string>
+
+    <string name="msg.erroOperacion">Hubo un error al realizar la operación, vuelva a intentarlo por favor.</string>
+
+
 </resources>

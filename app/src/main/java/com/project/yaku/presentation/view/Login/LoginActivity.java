@@ -1,6 +1,8 @@
 package com.project.yaku.presentation.view.Login;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -18,9 +20,6 @@ import com.google.android.gms.auth.api.signin.GoogleSignInResult;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.android.gms.common.api.OptionalPendingResult;
-import com.google.android.gms.common.api.ResultCallback;
-
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -31,6 +30,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 import com.project.yaku.R;
 import com.project.yaku.presentation.model.ui.MasterView;
+import com.project.yaku.presentation.view.Main.MainActivity;
 import com.project.yaku.presentation.view.Quiz.QuizActivity;
 
 public class LoginActivity extends AppCompatActivity implements MasterView, GoogleApiClient.OnConnectionFailedListener,
@@ -45,10 +45,13 @@ public class LoginActivity extends AppCompatActivity implements MasterView, Goog
     private FirebaseAuth mAuth;
     private ProgressBar mProgressBar;
 
+    private SharedPreferences mSharedPreferences;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        mSharedPreferences= getSharedPreferences(getResources().getString(R.string.sharedPrefs), Context.MODE_PRIVATE);
 
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(getString(R.string.default_web_client_id))
@@ -67,9 +70,7 @@ public class LoginActivity extends AppCompatActivity implements MasterView, Goog
 
         mAuth = FirebaseAuth.getInstance();
 
-
         findViewById(R.id.sign_in_button).setOnClickListener(this);
-
     }
 
     @Override
@@ -114,7 +115,6 @@ public class LoginActivity extends AppCompatActivity implements MasterView, Goog
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        // Result returned from launching the Intent from GoogleSignInApi.getSignInIntent(...);
         if (requestCode == RC_SIGN_IN) {
             GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
             if(result.isSuccess()){
@@ -122,25 +122,8 @@ public class LoginActivity extends AppCompatActivity implements MasterView, Goog
                 firebaseAuthWithGoogle(account);
             }
             else{
-                //failed
+                showMessage(getResources().getString(R.string.msg_erroOperacion));
             }
-            //handleSignInResult(result);
-        }
-    }
-    // [END onActivityResult]
-
-    // [START handleSignInResult]
-    private void handleSignInResult(GoogleSignInResult result) {
-        Log.d(TAG, "handleSignInResult:" + result.isSuccess());
-        if (result.isSuccess()) {
-            // Signed in successfully, show authenticated UI.
-            GoogleSignInAccount acct = result.getSignInAccount();
-            Log.e("Name",acct.getDisplayName());
-            //mStatusTextView.setText(getString(R.string.signed_in_fmt, acct.getDisplayName()));
-            //updateUI(true);
-        } else {
-            // Signed out, show unauthenticated UI.
-            //updateUI(false);
         }
     }
 
@@ -156,30 +139,29 @@ public class LoginActivity extends AppCompatActivity implements MasterView, Goog
 
     private void firebaseAuthWithGoogle(GoogleSignInAccount acct) {
         Log.d(TAG, "firebaseAuthWithGoogle:" + acct.getId());
-
+        showProgressDialog();
         AuthCredential credential = GoogleAuthProvider.getCredential(acct.getIdToken(), null);
         mAuth.signInWithCredential(credential)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            // Sign in success, update UI with the signed-in user's information
+                            hideProgressDialog();
                             Log.d(TAG, "signInWithCredential:success");
                             FirebaseUser user = mAuth.getCurrentUser();
                             navigateToActivity(new Intent(LoginActivity.this, QuizActivity.class));
                         } else {
-                            // If sign in fails, display a message to the user.
+                            hideProgressDialog();
                             Log.w(TAG, "signInWithCredential:failure", task.getException());
-                            Toast.makeText(LoginActivity.this, "Authentication failed.",
-                                    Toast.LENGTH_SHORT).show();
-                            //updateUI(null);
+                            showMessage(getResources().getString(R.string.msg_erroOperacion));
                         }
                     }
                 });
     }
 
     void updateUI(FirebaseUser currentUser){
-        navigateToActivity(new Intent(LoginActivity.this,QuizActivity.class));
+        if(mSharedPreferences.getBoolean("quizRealized",false))navigateToActivity(new Intent(LoginActivity.this,QuizActivity.class));
+        else navigateToActivity(new Intent(LoginActivity.this,MainActivity.class));
     }
 
     void showProgressDialog(){
