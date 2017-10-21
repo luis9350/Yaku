@@ -46,6 +46,13 @@
     <string name="sharedPrefs">yakuSharedPrefs</string>
 
     <string name="msg.erroOperacion">Hubo un error al realizar la operación, vuelva a intentarlo por favor.</string>
+    <!--Main Activity-->
+    <string name="main.closeApp">Salir</string>
+    <string name="main.msgCloseApp">Desea salir de la Aplicación?</string>
+
+    <string name="tip.tipSed">Ya sigo este Tip</string>
+    <string name="tip.entendido">ENTENDIDO</string>
+
 
 
 </resources>

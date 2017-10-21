@@ -109,6 +109,7 @@ public class LoginActivity extends AppCompatActivity implements MasterView, Goog
     @Override
     public void navigateToActivity(Intent i) {
         startActivity(i);
+        finish();
     }
 
     @Override
@@ -160,8 +161,14 @@ public class LoginActivity extends AppCompatActivity implements MasterView, Goog
     }
 
     void updateUI(FirebaseUser currentUser){
-        if(mSharedPreferences.getBoolean("quizRealized",false))navigateToActivity(new Intent(LoginActivity.this,QuizActivity.class));
-        else navigateToActivity(new Intent(LoginActivity.this,MainActivity.class));
+        if(currentUser!=null){
+            if(mSharedPreferences.getBoolean("quizRealized",false))navigateToActivity(new Intent(LoginActivity.this,QuizActivity.class));
+            else navigateToActivity(new Intent(LoginActivity.this,MainActivity.class));
+        }
+        else{
+            showMessage("Bienvenido a Yaku");
+        }
+
     }
 
     void showProgressDialog(){
